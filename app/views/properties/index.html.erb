@@ -1,2 +1,14 @@
 <h1>投稿一覧</h1>
-<%= @properties %>
+<div class="property_list">
+  <% @properties.each do |property| %>
+    <%= property.property_name %>
+    <%= property.rent_price %>
+    <%= property.address %>
+    <%= property.age %>
+    <%= property.remark %>
+    <%= link_to '詳細', property_path(property.id) %>
+
+  <% end %>
+</div>
+
+<%= link_to '新しく物件を投稿する', new_property_path %>
