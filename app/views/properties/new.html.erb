@@ -16,5 +16,17 @@
     <%= f.label :"備考" %>
     <%= f.text_field :remark %>
   </div>
+  <%= f.fields_for(@station) do |station| %>
+    <div class="station_form">
+      <%= station.label :"路線名" %>
+      <%= station.text_field :route_name %>
+
+      <%= station.label :"駅名" %>
+      <%= station.text_field :station_name %>
+
+      <%= station.label :"徒歩分数" %>
+      <%= station.text_field :time_required %>
+    </div>
+  <% end %>
   <%= f.submit %>
 <% end %>
