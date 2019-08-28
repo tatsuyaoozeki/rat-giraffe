@@ -36,7 +36,7 @@ class PropertiesController < ApplicationController
   def update
     # @property = Property.find(params[:id])
     respond_to do |format|
-      if @Property.update(property_params)
+      if @property.update(property_params)
         format.html { redirect_to property_path(@property.id), notice: '編集しました' }
         format.json { render 'show', status: :ok, local: @property }
       else
@@ -45,6 +45,8 @@ class PropertiesController < ApplicationController
       end
     end
   end
+
+
 
   private
     def property_params
