@@ -1,12 +1,13 @@
 <h1>閲覧</h1>
-<%= @property.property_name %>
-<%= @property.rent_price %>
-<%= @property.address %>
-<%= @property.age %>
-<%= @property.remark %>
-<%= @property.station.route_name %>
-<%= @property.station.station_name %>
-<%= @property.station.time_required %>
+
+  <%= @property.property_name %>
+  <%= "#{@property.rent_price}円" %>
+  <%= @property.address %>
+  <%= "築#{@property.age}年" %>
+  <%= @property.remark %>
+  <%= @property.stations.first.route_name %>
+  <%= @property.stations.first.station_name %>
+  <%= "#{@property.stations.first.time_required}分" %>
 
 <%= link_to '編集', edit_property_path(@property) %>
 <%= link_to '戻る', properties_path %>

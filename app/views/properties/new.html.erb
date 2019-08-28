@@ -16,7 +16,7 @@
     <%= f.label :"備考" %>
     <%= f.text_field :remark %>
   </div>
-  <%= f.fields_for(@station) do |station| %>
+  <%= f.fields_for :stations do |station| %>
     <div class="station_form">
       <%= station.label :"路線名" %>
       <%= station.text_field :route_name %>
