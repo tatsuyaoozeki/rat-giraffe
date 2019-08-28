@@ -4,6 +4,9 @@
 <%= @property.address %>
 <%= @property.age %>
 <%= @property.remark %>
+<%= @property.station.route_name %>
+<%= @property.station.station_name %>
+<%= @property.station.time_required %>
 
 <%= link_to '編集', edit_property_path(@property) %>
 <%= link_to '戻る', properties_path %>

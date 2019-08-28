@@ -1,13 +1,5 @@
 <h1>投稿一覧</h1>
-<% if @property.errors.any? %>
-  <div id="error_explanation">
-    <ul>
-      <% @property.errors.full_messages.each do |message| %>
-        <li class="er-mg"><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+
 <div class="property_list">
   <% @properties.each do |property| %>
     <%= property.property_name %>
@@ -16,7 +8,7 @@
     <%= property.age %>
     <%= property.remark %>
     <%= link_to '詳細', property_path(property.id) %>
-
+    <%= link_to '編集', edit_property_path(property.id) %>
   <% end %>
 </div>
 

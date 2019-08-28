@@ -10,22 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20190827040302) do
+ActiveRecord::Schema.define(version: 20190828041926) do
 
   create_table "properties", force: :cascade do |t|
-    t.string   "property_name"
-    t.integer  "rent_price"
-    t.text     "address"
-    t.integer  "age"
-    t.text     "remark"
+    t.string   "property_name", null: false
+    t.integer  "rent_price",    null: false
+    t.text     "address",       null: false
+    t.integer  "age",           null: false
+    t.text     "remark",        null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
   end
 
   create_table "stations", force: :cascade do |t|
-    t.string   "route_name"
-    t.string   "station_name"
-    t.integer  "time_required"
+    t.string   "route_name",    null: false
+    t.string   "station_name",  null: false
+    t.integer  "time_required", null: false
     t.datetime "created_at",    null: false
     t.datetime "updated_at",    null: false
     t.integer  "property_id"
