@@ -1,2 +1,51 @@
-<h1>新規作成</h1>
-<%= render 'form' %>
+<h1>登録</h1>
+<%= form_for(@property) do |f| %>
+  <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@property.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+      <% @property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2>物件登録</h2>
+    <div class="property_form">
+      <dl>
+        <dt><%= f.label :"物件名" %></dt>
+        <dd><%= f.text_field :property_name %></dd>
+
+        <dt><%= f.label :"賃料" %></dt>
+        <dd><%= f.text_field :rent_price %>円</dd>
+
+        <dt><%= f.label :"住所" %></dt>
+        <dd><%= f.text_field :address %></dd>
+
+        <dt><%= f.label :"築年数" %></dt>
+        <dd><%= f.text_field :age %>年</dd>
+
+        <dt><%= f.label :"備考" %></dt>
+        <dd><%= f.text_field :remark %></dd>
+      </dl>
+
+    </div>
+    <% @property.stations.each_with_index do |station, index| %>
+      <%= f.fields_for :stations, station do |s_f| %>
+      <h3>最寄り駅<%= index + 1 %></h3>
+        <div class="station_form">
+          <dl>
+            <dt><%= s_f.label :"路線名" %></dt>
+            <dd><%= s_f.text_field :route_name %></dd>
+
+            <dt><%= s_f.label :"駅名" %></dt>
+            <dd><%= s_f.text_field :station_name %></dd>
+
+            <dt><%= s_f.label :"徒歩分数" %></dt>
+            <dd><%= s_f.text_field :time_required %>分</dd>
+          </dl>
+        </div>
+      <% end %>
+    <% end %>
+  <%= f.submit %>
+<% end %>

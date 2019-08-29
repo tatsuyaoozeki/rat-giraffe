@@ -1,2 +1,44 @@
 <h1>編集</h1>
-<%= render 'form' %>
+<%= form_for(@property) do |f| %>
+  <% if @property.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@property.errors.count, "error") %> prohibited this article from being saved:</h2>
+      <ul>
+      <% @property.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+  <h2>物件登録</h2>
+    <div class="property_form">
+      <%= f.label :"物件名" %>
+      <%= f.text_field :property_name %>
+
+      <%= f.label :"賃料" %>
+      <%= f.text_field :rent_price %>
+
+      <%= f.label :"住所" %>
+      <%= f.text_field :address %>
+
+      <%= f.label :"築年数" %>
+      <%= f.text_field :age %>
+
+      <%= f.label :"備考" %>
+      <%= f.text_field :remark %>
+    </div>
+    <%= f.fields_for :stations do |station| %>
+    <h3>最寄り駅</h3>
+      <div class="station_form">
+        <%= station.label :"路線名" %>
+        <%= station.text_field :route_name %>
+
+        <%= station.label :"駅名" %>
+        <%= station.text_field :station_name %>
+
+        <%= station.label :"徒歩分数" %>
+        <%= station.text_field :time_required %>
+      </div>
+  <% end %>
+  <%= f.submit %>
+<% end %>

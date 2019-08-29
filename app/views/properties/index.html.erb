@@ -1,15 +1,25 @@
-<h1>投稿一覧</h1>
+<h1>物件一覧</h1>
 
-<div class="property_list">
+<table>
+  <tr>
+    <th>物件名</th>
+    <th>賃料</th>
+    <th>住所</th>
+    <th>築年数</th>
+    <th>備考</th>
+  </tr>
+
   <% @properties.each do |property| %>
-    <%= property.property_name %>
-    <%= property.rent_price %>
-    <%= property.address %>
-    <%= property.age %>
-    <%= property.remark %>
-    <%= link_to '詳細', property_path(property.id) %>
-    <%= link_to '編集', edit_property_path(property.id) %>
+  <tr>
+    <td><%= property.property_name %></td>
+    <td><%= property.rent_price %>円</td>
+    <td><%= property.address %></td>
+    <td><%= property.age %>年</td>
+    <td class="remark"><%= property.remark %></td>
+    <td><%= link_to '詳細', property_path(property.id) %></td>
+    <td><%= link_to '編集', edit_property_path(property.id) %></td>
+    <td><%= link_to '削除', property_path(property.id), method: :delete %></td>
+  </tr>
   <% end %>
-</div>
-
+</table>
 <%= link_to '新しく物件を投稿する', new_property_path %>

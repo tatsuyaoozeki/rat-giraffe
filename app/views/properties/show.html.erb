@@ -1,13 +1,28 @@
 <h1>閲覧</h1>
+  <h2>物件情報</h2>
+  <dl>
+    <dt class="show">物件名:</dt>
+    <dd><%= @property.property_name %></dd>
 
-  <%= @property.property_name %>
-  <%= "#{@property.rent_price}円" %>
-  <%= @property.address %>
-  <%= "築#{@property.age}年" %>
-  <%= @property.remark %>
-  <%= @property.stations.first.route_name %>
-  <%= @property.stations.first.station_name %>
-  <%= "#{@property.stations.first.time_required}分" %>
+    <dt class="show">賃料:</dt>
+    <dd><%= "#{@property.rent_price}円" %></dd>
+
+    <dt class="show">住所:</dt>
+    <dd><%= @property.address %></dd>
+
+    <dt class="show">築年数:</dt>
+    <dd><%= "築#{@property.age}年" %></dd>
+
+    <dt class="show">備考:</dt>
+    <dd><%= @property.remark %></dd>
+  </dl>
+
+    <% @property.stations.each_with_index do |station, index| %>
+    <h3>最寄り駅<%= index + 1 %></h3>
+      <%= station.route_name %>
+      <%= station.station_name %>
+      <%= "#{station.time_required}分" %>
+    <% end %>
 
 <%= link_to '編集', edit_property_path(@property) %>
 <%= link_to '戻る', properties_path %>
