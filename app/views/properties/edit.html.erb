@@ -12,32 +12,36 @@
   <% end %>
   <h2>物件登録</h2>
     <div class="property_form">
-      <%= f.label :"物件名" %>
-      <%= f.text_field :property_name %>
+      <dl class="ed1">
+        <dt><%= f.label :"物件名" %></dt>
+        <dd><%= f.text_field :property_name %></dd>
 
-      <%= f.label :"賃料" %>
-      <%= f.text_field :rent_price %>
+        <dt><%= f.label :"賃料" %></dt>
+        <dd><%= f.text_field :rent_price %></dd>
 
-      <%= f.label :"住所" %>
-      <%= f.text_field :address %>
+        <dt><%= f.label :"住所" %></dt>
+        <dd><%= f.text_field :address %></dd>
 
-      <%= f.label :"築年数" %>
-      <%= f.text_field :age %>
+        <dt><%= f.label :"築年数" %></dt>
+        <dd><%= f.text_field :age %></dd>
 
-      <%= f.label :"備考" %>
-      <%= f.text_field :remark %>
+        <dt><%= f.label :"備考" %></dt>
+        <dd><%= f.text_field :remark %></dd>
+      </dl>
     </div>
     <%= f.fields_for :stations do |station| %>
     <h3>最寄り駅</h3>
       <div class="station_form">
-        <%= station.label :"路線名" %>
-        <%= station.text_field :route_name %>
+        <dl>
+          <dt><%= station.label :"路線名" %></dt>
+          <dd><%= station.text_field :route_name %></dd>
 
-        <%= station.label :"駅名" %>
-        <%= station.text_field :station_name %>
+          <dt><%= station.label :"駅名" %></dt>
+          <dd><%= station.text_field :station_name %></dd>
 
-        <%= station.label :"徒歩分数" %>
-        <%= station.text_field :time_required %>
+          <dt><%= station.label :"徒歩分数" %></dt>
+          <dd><%= station.text_field :time_required %></dd>
+        </dl>
       </div>
   <% end %>
   <%= f.submit %>

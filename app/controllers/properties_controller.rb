@@ -12,15 +12,20 @@ class PropertiesController < ApplicationController
 
   def create
     @property = Property.new(property_params)
-    respond_to do |format|
-      if @property.save
-        format.html { redirect_to property_path(@property.id), notice: '物件を登録しました' }
-        format.json { render :show, status: :created, location: @property }
-      else
-        format.html { render :new }
-        format.json { render json: @property.errors, status: :unprocessable_entity }
-      end
+    if @property.save
+      redirect_to properties_path, notice: '物件を登録しました'
+    else
+      render 'new'
     end
+    # respond_to do |format|
+    #   if @property.save
+    #     format.html { redirect_to property_path(@property.id), notice: '物件を登録しました' }
+    #     format.json { render :show, status: :created, location: @property }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @property.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def show
@@ -30,25 +35,33 @@ class PropertiesController < ApplicationController
   end
 
   def update
-    respond_to do |format|
-      if @property.update(property_params)
-        format.html { redirect_to property_path(@property.id), notice: '編集しました' }
-        format.json { render 'show', status: :ok, local: @property }
-      else
-        format.html { redirect_to 'edit'}
-        format.json { render json: @property.errors, status: :unprocessable_entity }
-      end
+    if @property.update(property_params)
+      redirect_to property_path(@property.id), notice: '編集しました'
+    else
+      redirect_to 'edit'
     end
+    # respond_to do |format|
+    #   if @property.update(property_params)
+    #     format.html { redirect_to property_path(@property.id), notice: '編集しました' }
+    #     format.json { render 'show', status: :ok, local: @property }
+    #   else
+    #     format.html { redirect_to 'edit'}
+    #     format.json { render json: @property.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   def destroy
     @property.destroy
-    respond_to do |format|
-      if @property.destroy
-        format.html { redirect_to properties_url, notice: '削除しました' }
-        format.json { head :no_content }
-      end
+    if @property.destroy
+      redirect_to properties_url, notice: '削除しました'
     end
+    # respond_to do |format|
+    #   if @property.destroy
+    #     format.html { redirect_to properties_url, notice: '削除しました' }
+    #     format.json { head :no_content }
+    #   end
+    # end
   end
 
   private
