@@ -13,3 +13,17 @@
  *= require_tree .
  *= require_self
  */
+
+body {
+  width: 100%;
+  hieght: 100%;
+}
+
+th, td {
+  width: auto;
+  text-align: center;
+}
+
+.remark {
+  width: 70%;
+}
